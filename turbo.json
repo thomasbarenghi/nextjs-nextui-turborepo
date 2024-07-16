@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["IMPORTANT_GLOBAL_VARIABLE"],
+  "tasks": {
+    "build": {
+      "env": [
+        "NEXT_PUBLIC_CLIENT_URL",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "CLOUDINARY_CLOUD_NAME",
+        "CLOUDINARY_API_KEY",
+        "CLOUDINARY_API_SECRET",
+        "MP_APP_ID",
+        "MP_CLIENT_SECRET",
+        "MP_ACCESS_TOKEN",
+        "MP_PUBLIC_KEY",
+        "MP_USER_ID",
+        "MP_APP_ID"
+      ],
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
